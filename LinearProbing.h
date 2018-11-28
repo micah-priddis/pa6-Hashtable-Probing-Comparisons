@@ -1,5 +1,6 @@
-#ifndef QUADRATIC_PROBING_H
-#define QUADRATIC_PROBING_H
+#ifndef LINEAR_PROBING_H
+#define LINEAR_PROBING_H
+
 
 #include <vector>
 #include <algorithm>
@@ -21,10 +22,10 @@ int nextPrime( int n );
 // int hashCode( string str ) --> Global method to hash strings
 
 template <typename HashedObj>
-class HashTable
+class LinearHashTable
 {
   public:
-    explicit HashTable( int size = 101 ) : array( nextPrime( size ) )
+    explicit LinearHashTable( int size = 101 ) : array( nextPrime( size ) )
       { makeEmpty( ); }
 
     bool contains( const HashedObj & x ) const
@@ -112,7 +113,6 @@ class HashTable
 
     int findPos( const HashedObj & x ) const
     {
-        int offset = 1;
         int currentPos = myhash( x );
 
         while( array[ currentPos ].info != EMPTY &&
