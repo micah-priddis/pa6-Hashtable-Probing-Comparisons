@@ -40,8 +40,19 @@ int main(){
 	std::cout << QueryArray[0];
 
 	HashTable<std::string> ChainingHT;
+
 	LinearHashTable<std::string> LinearProbingHT;
 	QuadraticHashTable<std::string> QuadraticProbingHT;
 
 	return 0;
+}
+
+
+void InsertIntoChainingHT(){
+
+	for(int i = 0; i< DataArray.size();i++){
+		LinearProbingHT.insert(DataArray[i]);
+	}
+
+
 }
