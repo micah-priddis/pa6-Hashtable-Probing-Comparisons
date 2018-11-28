@@ -118,8 +118,7 @@ class HashTable
         while( array[ currentPos ].info != EMPTY &&
                array[ currentPos ].element != x )
         {
-            currentPos += offset;  // Compute ith probe
-            offset += 2;
+            currentPos += 1;  // Compute ith probe
             if( currentPos >= array.size( ) )
                 currentPos -= array.size( );
         }
