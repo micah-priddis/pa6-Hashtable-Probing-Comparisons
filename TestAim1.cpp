@@ -1,10 +1,30 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <chrono>
 
 #include "SeparateChaining.h"
 #include "QuadraticProbing.h"
 #include "LinearProbing.h"
+
+
+int InsertIntoChainingHT(std::vector<std::string> data){
+        HashTable<std::string> InsertTimerChainingHT;
+        int TimeAverage = 0;
+
+        std::chrono::steady_clock::time_point start, end;
+
+        for(int i = 0; i < data.size();i++){
+                start = std::chrono::steady_clock::now(); // get time before insert
+                InsertTimerChainingHT.insert(data[i]);
+                end = std::chrono::steady_clock::now(); // time after insert
+        }
+
+        TimeAverage += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+
+        return TimeAverage;
+}
+
 int main(){
 
 
@@ -23,7 +43,7 @@ int main(){
 	}
 	file.close();
 
-		file.open("queries.txt");
+        file.open("queries.txt");
 
 	std::vector<std::string> QueryArray;
 
@@ -37,22 +57,11 @@ int main(){
 	}
 	file.close();
 
-	std::cout << QueryArray[0];
-
 	HashTable<std::string> ChainingHT;
-
-	LinearHashTable<std::string> LinearProbingHT;
+        LinearHashTable<std::string> LinearProbingHT;
 	QuadraticHashTable<std::string> QuadraticProbingHT;
 
+        std::cout << InsertIntoChainingHT(DataArray) << std::endl;
+
 	return 0;
-}
-
-
-void InsertIntoChainingHT(){
-
-	for(int i = 0; i< DataArray.size();i++){
-		LinearProbingHT.insert(DataArray[i]);
-	}
-
-
 }
