@@ -25,9 +25,10 @@ class QuadraticHashTable
 {
   public:
     explicit QuadraticHashTable( int size = 101 ) : array( nextPrime( size ) )
-      { makeEmpty( ); }
+      { makeEmpty( );
+      collisions = 0;}
 
-    bool contains( const HashedObj & x ) const
+    bool contains( const HashedObj & x )
     {
         return isActive( findPos( x ) );
     }
@@ -89,9 +90,13 @@ class QuadraticHashTable
         return true;
     }
 
+    int getCollisions() { return collisions; }
+    void setCollisions(int x) { collisions = x; }
     enum EntryType { ACTIVE, EMPTY, DELETED };
 
   private:
+    int collisions;
+
     struct HashEntry
     {
         HashedObj element;
@@ -110,14 +115,16 @@ class QuadraticHashTable
     bool isActive( int currentPos ) const
       { return array[ currentPos ].info == ACTIVE; }
 
-    int findPos( const HashedObj & x ) const
+    int findPos( const HashedObj & x )
     {
+
         int offset = 1;
         int currentPos = myhash( x );
 
         while( array[ currentPos ].info != EMPTY &&
                array[ currentPos ].element != x )
         {
+            collisions++;
             currentPos += offset;  // Compute ith probe
             offset += 2;
             if( currentPos >= array.size( ) )
