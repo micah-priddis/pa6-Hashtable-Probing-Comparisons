@@ -93,6 +93,7 @@ class LinearHashTable
     enum EntryType { ACTIVE, EMPTY, DELETED };
 
   private:
+
     struct HashEntry
     {
         HashedObj element;

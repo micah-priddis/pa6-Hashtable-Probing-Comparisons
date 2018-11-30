@@ -8,28 +8,49 @@
 #include "LinearProbing.h"
 
 
-int InsertIntoChainingHT(std::vector<std::string> data){
-        HashTable<std::string> InsertTimerChainingHT;
-        int TimeAverage = 0;
+// Prints total time to search for each query in list.
+void SearchChainingHT(std::vector<std::string> query, HashTable<std::string> HT) {
+    int TimeAverage = 0;
+    std::chrono::steady_clock::time_point start, end;
 
-        std::chrono::steady_clock::time_point start, end;
+    for(int i = 0; i < query.size();i++) {
+            start = std::chrono::steady_clock::now(); // get time before insert
+            HT.contains(query[i]);
+            end = std::chrono::steady_clock::now(); // time after insert
 
-        for(int i = 0; i < data.size();i++){
-                start = std::chrono::steady_clock::now(); // get time before insert
-                InsertTimerChainingHT.insert(data[i]);
-                end = std::chrono::steady_clock::now(); // time after insert
-        }
+            TimeAverage += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    }
 
-        TimeAverage += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    std::cout << "SearchChainingHT: " << TimeAverage << std::endl;
 
-        return TimeAverage;
+}
+
+// Reports time to insert entire vector into HT
+HashTable<std::string> InsertIntoChainingHT(std::vector<std::string> data){
+    HashTable<std::string> InsertTimerChainingHT;
+    int TimeAverage = 0;
+
+    std::chrono::steady_clock::time_point start, end;
+
+    for(int i = 0; i < data.size();i++) {
+            start = std::chrono::steady_clock::now(); // get time before insert
+            InsertTimerChainingHT.insert(data[i]);
+            end = std::chrono::steady_clock::now(); // time after insert
+
+            TimeAverage += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    }
+
+    //std::cout << InsertTimerChainingHT.getCollisions() << std::endl;
+    std::cout << "InsertIntoChainingHT: " << TimeAverage << std::endl;
+
+    return InsertTimerChainingHT;
 }
 
 int main(){
 
 
-	std::ifstream file;
-	file.open("OHenry.txt");
+    std::ifstream file;
+    file.open("OHenry.txt");
 
 	std::vector<std::string> DataArray;
 
@@ -58,10 +79,10 @@ int main(){
 	file.close();
 
 	HashTable<std::string> ChainingHT;
-        LinearHashTable<std::string> LinearProbingHT;
+    LinearHashTable<std::string> LinearProbingHT;
 	QuadraticHashTable<std::string> QuadraticProbingHT;
 
-        std::cout << InsertIntoChainingHT(DataArray) << std::endl;
+    SearchChainingHT(QueryArray, InsertIntoChainingHT(DataArray)); // Separate Chaining
 
 	return 0;
 }

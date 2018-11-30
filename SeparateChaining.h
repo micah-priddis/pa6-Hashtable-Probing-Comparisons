@@ -26,7 +26,9 @@ class HashTable
 {
   public:
     explicit HashTable( int size = 101 ) : currentSize{ 0 }
-      { theLists.resize( 101 ); }
+      { theLists.resize( 101 );
+        CollisionsChainingHT = 0;
+      }
 
     bool contains( const HashedObj & x ) const
     {
@@ -81,9 +83,18 @@ class HashTable
         return true;
     }
 
+    int getCollisions() {
+        return CollisionsChainingHT;
+    }
+
+    void setCollisions(int x) {
+        CollisionsChainingHT = x;
+    }
+
   private:
     vector<list<HashedObj>> theLists;   // The array of Lists
     int  currentSize;
+    int CollisionsChainingHT; // Used to keep track of collision count
 
     void rehash( )
     {
