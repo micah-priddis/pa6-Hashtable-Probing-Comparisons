@@ -120,6 +120,7 @@ QuadraticHashTable<std::string> InsertIntoQuadraticHT(std::vector<std::string> d
 
     return InsertTimerQuadraticHT;
 }
+
 int main(){
 
 
