@@ -1,11 +1,11 @@
-#ifndef SIMPLEHASH_H
-#define SIMPLEHADH_H
+#ifndef PREFIXHASH_H
+#define PREFIXHASH_H
 
-#include "QuadraticProbing.h"
 #include <vector>
 #include <algorithm>
 #include <functional>
 #include <chrono>
+#include "QuadraticProbing.h"
 
 #include <string>
 
@@ -26,10 +26,10 @@ int nextPrime( int n );
 // int hashCode( string str ) --> Global method to hash strings
 
 template <typename HashedObj>
-class SimpleHash
+class PrefixHash
 {
   public:
-    explicit SimpleHash( int size = 101 ) : array( nextPrime( size ) )
+    explicit PrefixHash( int size = 101 ) : array( nextPrime( size ) )
       { makeEmpty( );
       collisions = 0;}
 
@@ -156,12 +156,7 @@ class SimpleHash
 
     size_t myhash( const std::string & key )
     {
-        int hashVal = 0;
-
-        for(char ch: key){
-            hashVal += ch;
-        }
-        return hashVal % array.size( );
+        return (key[0] + 27 * key[1] + 729 * key[2] ) % array.size();
     }
 };
 
