@@ -63,7 +63,7 @@ void SearchLinearHT(std::vector<std::string> query, LinearHashTable<std::string>
     }
 
     std::cout << "==========LINEAR SEARCH==========" << std::endl;
-    std::cout << "Linear Total Search Time: " << TimeTotal << std::endl;
+    std::cout << "Linear Total Search Time: " << TimeTotal <<  " ns" << std::endl;
     std::cout << "Linear Average Search Time: " << TimeTotal / query.size() << " ns" << std::endl;
 
 }
