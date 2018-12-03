@@ -45,8 +45,10 @@ class HashTable
     bool insert( const HashedObj & x )
     {
         auto & whichList = theLists[ myhash( x ) ];
-        if( find( begin( whichList ), end( whichList ), x ) != end( whichList) )
+        if( find( begin( whichList ), end( whichList ), x ) != end( whichList) ) {
+            CollisionsChainingHT++;
             return false;
+        }
         whichList.push_back( x );
 
             // Rehash; see Section 5.5
@@ -59,8 +61,11 @@ class HashTable
     bool insert( HashedObj && x )
     {
         auto & whichList = theLists[ myhash( x ) ];      
-        if( find( begin( whichList ), end( whichList ), x ) != end( whichList ) )
+        if( find( begin( whichList ), end( whichList ), x ) != end( whichList ) ) { // The hash already exists (collision)
+            CollisionsChainingHT++;
             return false;
+        }
+
         whichList.push_back( std::move( x ) );
 
             // Rehash; see Section 5.5
