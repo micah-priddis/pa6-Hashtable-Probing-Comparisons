@@ -40,7 +40,7 @@ HashTable<std::string> InsertIntoChainingHT(std::vector<std::string> data){
             TimeTotal += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
     }
 
-    //std::cout << InsertTimerChainingHT.getCollisions() << std::endl;
+    std::cout << "CollisionsChainingHT: " << InsertTimerChainingHT.getCollisions() << std::endl;
     std::cout << "InsertIntoChainingHT: " << TimeTotal << std::endl;
 
     return InsertTimerChainingHT;
