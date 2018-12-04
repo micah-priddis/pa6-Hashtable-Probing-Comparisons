@@ -21,8 +21,14 @@ void SearchChainingHT(std::vector<std::string> query, HashTable<std::string> HT)
             TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
+<<<<<<< HEAD
     std::cout << "SearchChainingHT: " << TimeTotal << "ns" << std::endl;
 
+=======
+    std::cout << "==========CHAINING SEARCH==========" << std::endl;
+    std::cout << "Chaining Total Search Time: " << TimeTotal << " ns" << std::endl;
+    std::cout << "Chaining Average Search Time: " << TimeTotal / query.size() << " ns" << std::endl;
+>>>>>>> 37b216e974174b04df41355035451ac68e1c6d25
 }
 
 // Reports time to insert entire vector into HT
@@ -40,8 +46,15 @@ HashTable<std::string> InsertIntoChainingHT(std::vector<std::string> data){
             TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
+<<<<<<< HEAD
     std::cout << "CollisionsChainingHT: " << InsertTimerChainingHT.getCollisions() << std::endl;
     std::cout << "InsertIntoChainingHT: " << TimeTotal << "ns" << std::endl;
+=======
+    std::cout << "==========CHAINING INSERT==========" << std::endl;
+    std::cout << "Chaining Collisions: " << InsertTimerChainingHT.getCollisions() << " collisions" << std::endl;
+    std::cout << "Chaining Total Insertion Time: " << TimeTotal << " ns" << std::endl;
+    std::cout << "Chaining Average Insertion Time: " << TimeTotal / data.size() << " ns" << std::endl;
+>>>>>>> 37b216e974174b04df41355035451ac68e1c6d25
 
     return InsertTimerChainingHT;
 }
@@ -59,7 +72,14 @@ void SearchLinearHT(std::vector<std::string> query, LinearHashTable<std::string>
             TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
+<<<<<<< HEAD
     std::cout << "SearchLinearHT: " << TimeTotal << "ns" << std::endl;
+=======
+    std::cout << "==========LINEAR SEARCH==========" << std::endl;
+    std::cout << "Linear Total Search Time: " << TimeTotal <<  " ns" << std::endl;
+    std::cout << "Linear Average Search Time: " << TimeTotal / query.size() << " ns" << std::endl;
+
+>>>>>>> 37b216e974174b04df41355035451ac68e1c6d25
 }
 
 // Reports time to insert entire vector into HT
@@ -77,8 +97,15 @@ LinearHashTable<std::string> InsertIntoLinearHT(std::vector<std::string> data){
             TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
+<<<<<<< HEAD
     std::cout << "Linear Collisions: " << InsertTimerLinearHT.getCollisions() << std::endl;
     std::cout << "InsertIntoLinearHT: " << TimeTotal << "ns" << std::endl;
+=======
+    std::cout << "==========LINEAR INSERT==========" << std::endl;
+    std::cout << "Linear Collisions: " << InsertTimerLinearHT.getCollisions() << " collisions" << std::endl;
+    std::cout << "Linear Total Insertion Time: " << TimeTotal << " ns" << std::endl;
+    std::cout << "Linear Average Insertion Time: " << TimeTotal / data.size() << " ns" << std::endl;
+>>>>>>> 37b216e974174b04df41355035451ac68e1c6d25
 
     return InsertTimerLinearHT;
 }
@@ -97,7 +124,13 @@ void SearchQuadraticHT(std::vector<std::string> query, QuadraticHashTable<std::s
             TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
+<<<<<<< HEAD
     std::cout << "SearchQuadraticHT: " << TimeTotal << "ns" << std::endl;
+=======
+    std::cout << "==========QUADRATIC SEARCH==========" << std::endl;
+    std::cout << "Quadratic Total Search Time: " << TimeTotal << " ns" << std::endl;
+    std::cout << "Quadratic Average Search Time: " << TimeTotal / query.size() << " ns" << std::endl;
+>>>>>>> 37b216e974174b04df41355035451ac68e1c6d25
 }
 
 // Reports time to insert entire vector into HT
@@ -115,21 +148,27 @@ QuadraticHashTable<std::string> InsertIntoQuadraticHT(std::vector<std::string> d
             TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
+<<<<<<< HEAD
     std::cout << "Quadratic Collisions: " << InsertTimerQuadraticHT.getCollisions() << std::endl;
     std::cout << "InsertIntoQuadraticHT: " << TimeTotal << "ns" << std::endl;
+=======
+    std::cout << "==========QUADRATIC INSERT==========" << std::endl;
+    std::cout << "Quadratic Collisions: " << InsertTimerQuadraticHT.getCollisions() << " collisions" << std::endl;
+    std::cout << "Quadratic Total Search Time: " << TimeTotal << " ns" << std::endl;
+    std::cout << "Quadratic Average Search Time: " << TimeTotal / data.size() << " ns" << std::endl;
+>>>>>>> 37b216e974174b04df41355035451ac68e1c6d25
 
     return InsertTimerQuadraticHT;
 }
 
 int main(){
 
-
+    // file processing for OHenry
     std::ifstream file;
     file.open("OHenry.txt");
 
-	std::vector<std::string> DataArray;
+    std::vector<std::string> DataArray; // vector used to hold OHenry data
 
-	//file processing
 	if(file.is_open()){
 		std::string line;
 
@@ -139,11 +178,12 @@ int main(){
 	}
 	file.close();
 
-        file.open("queries.txt");
 
-	std::vector<std::string> QueryArray;
+    // file processing for query
+    file.open("queries.txt");
 
-	//file processing
+    std::vector<std::string> QueryArray; // vector used to hold search queries
+
 	if(file.is_open()){
 		std::string line;
 
@@ -158,9 +198,7 @@ int main(){
 	QuadraticHashTable<std::string> QuadraticProbingHT;
 
     SearchChainingHT(QueryArray, InsertIntoChainingHT(DataArray)); // Separate Chaining
-    std::cout << "===============================" << std::endl;
     SearchLinearHT(QueryArray, InsertIntoLinearHT(DataArray)); // Linear Probing
-    std::cout << "===============================" << std::endl;
     SearchQuadraticHT(QueryArray, InsertIntoQuadraticHT(DataArray)); // Quadratic Probing
 
 	return 0;
