@@ -18,10 +18,10 @@ void SearchChainingHT(std::vector<std::string> query, HashTable<std::string> HT)
             HT.contains(query[i]);
             end = std::chrono::steady_clock::now(); // time after insert
 
-            TimeTotal += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+            TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
-    std::cout << "SearchChainingHT: " << TimeTotal << std::endl;
+    std::cout << "SearchChainingHT: " << TimeTotal << "ns" << std::endl;
 
 }
 
@@ -37,11 +37,11 @@ HashTable<std::string> InsertIntoChainingHT(std::vector<std::string> data){
             InsertTimerChainingHT.insert(data[i]);
             end = std::chrono::steady_clock::now(); // time after insert
 
-            TimeTotal += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+            TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
     std::cout << "CollisionsChainingHT: " << InsertTimerChainingHT.getCollisions() << std::endl;
-    std::cout << "InsertIntoChainingHT: " << TimeTotal << std::endl;
+    std::cout << "InsertIntoChainingHT: " << TimeTotal << "ns" << std::endl;
 
     return InsertTimerChainingHT;
 }
@@ -56,10 +56,10 @@ void SearchLinearHT(std::vector<std::string> query, LinearHashTable<std::string>
             HT.contains(query[i]);
             end = std::chrono::steady_clock::now(); // time after insert
 
-            TimeTotal += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+            TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
-    std::cout << "SearchLinearHT: " << TimeTotal << std::endl;
+    std::cout << "SearchLinearHT: " << TimeTotal << "ns" << std::endl;
 }
 
 // Reports time to insert entire vector into HT
@@ -74,11 +74,11 @@ LinearHashTable<std::string> InsertIntoLinearHT(std::vector<std::string> data){
             InsertTimerLinearHT.insert(data[i]);
             end = std::chrono::steady_clock::now(); // time after insert
 
-            TimeTotal += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+            TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
     std::cout << "Linear Collisions: " << InsertTimerLinearHT.getCollisions() << std::endl;
-    std::cout << "InsertIntoLinearHT: " << TimeTotal << std::endl;
+    std::cout << "InsertIntoLinearHT: " << TimeTotal << "ns" << std::endl;
 
     return InsertTimerLinearHT;
 }
@@ -94,10 +94,10 @@ void SearchQuadraticHT(std::vector<std::string> query, QuadraticHashTable<std::s
             HT.contains(query[i]);
             end = std::chrono::steady_clock::now(); // time after insert
 
-            TimeTotal += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+            TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
-    std::cout << "SearchQuadraticHT: " << TimeTotal << std::endl;
+    std::cout << "SearchQuadraticHT: " << TimeTotal << "ns" << std::endl;
 }
 
 // Reports time to insert entire vector into HT
@@ -112,11 +112,11 @@ QuadraticHashTable<std::string> InsertIntoQuadraticHT(std::vector<std::string> d
             InsertTimerQuadraticHT.insert(data[i]);
             end = std::chrono::steady_clock::now(); // time after insert
 
-            TimeTotal += std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+            TimeTotal += std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
     }
 
     std::cout << "Quadratic Collisions: " << InsertTimerQuadraticHT.getCollisions() << std::endl;
-    std::cout << "InsertIntoQuadraticHT: " << TimeTotal << std::endl;
+    std::cout << "InsertIntoQuadraticHT: " << TimeTotal << "ns" << std::endl;
 
     return InsertTimerQuadraticHT;
 }

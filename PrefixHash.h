@@ -154,6 +154,7 @@ class PrefixHash
                 insert( std::move( entry.element ) );
     }
 
+    //Prefix hash function, looks at the first 3 letters in a string
     size_t myhash( const std::string & key )
     {
         return (key[0] + 27 * key[1] + 729 * key[2] ) % array.size();

@@ -1,3 +1,4 @@
+
 #include "SimpleHash.h"
 #include "PrefixHash.h"
 #include "FullLengthHash.h"
@@ -5,6 +6,10 @@
 
 #include <fstream>
 
+
+//Function for timing the time to insert into a hash table with a simple hash function
+//returns the hash table populated with all of the strings in data
+//prints the total time and average time for insertion
 SimpleHash<std::string> InsertIntoSimpleHash(std::vector<std::string> & data){
 
 	std::cout << "---SimpleHash Insert---" << std::endl;
@@ -29,6 +34,8 @@ SimpleHash<std::string> InsertIntoSimpleHash(std::vector<std::string> & data){
     return InsertTimerSimpleHashHT;
 }
 
+//Searches the hashtable for every string in query
+//Prints the total and average time for searching
 void SearchSimpleHash(std::vector<string> & query, SimpleHash<std::string> HT){
     int TimeTotal = 0;
 
@@ -48,6 +55,9 @@ void SearchSimpleHash(std::vector<string> & query, SimpleHash<std::string> HT){
 }
 
 
+//Function for timing the time to insert into a hash table with the prefix hash function
+//returns the hash table populated with all of the strings in data
+//prints the total time and average time for insertion
 PrefixHash<std::string> InsertIntoPrefixHash(std::vector<std::string> & data){
 
     std::cout << "---PrefixHash Insert---" << std::endl;
@@ -72,6 +82,8 @@ PrefixHash<std::string> InsertIntoPrefixHash(std::vector<std::string> & data){
     return InsertTimerPrefixHashHT;
 }
 
+//Searches the hashtable for every string in query
+//Prints the total and average time for searching
 void SearchPrefixHash(std::vector<string> & query, PrefixHash<std::string> HT){
     int TimeTotal = 0;
 
@@ -90,6 +102,9 @@ void SearchPrefixHash(std::vector<string> & query, PrefixHash<std::string> HT){
     std::cout << "Average Time: " << TimeTotal / query.size() << "ns\n\n" << std::endl;
 }
 
+//Function for timing the time to insert into a hash table with the full length hash function
+//returns the hash table populated with all of the strings in data
+//prints the total time and average time for insertion
 FullLengthHash<std::string> InsertIntoFullLengthHash(std::vector<std::string> & data){
 
     std::cout << "---FullLengthHash Insert---" << std::endl;
@@ -114,6 +129,8 @@ FullLengthHash<std::string> InsertIntoFullLengthHash(std::vector<std::string> & 
     return InsertTimerFullLengthHashHT;
 }
 
+//Searches the hashtable for every string in query
+//Prints the total and average time for searching
 void SearchFullLengthHash(std::vector<string> & query, FullLengthHash<std::string> HT){
     int TimeTotal = 0;
 

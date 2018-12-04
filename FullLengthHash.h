@@ -154,6 +154,7 @@ class FullLengthHash
                 insert( std::move( entry.element ) );
     }
 
+    //Full length hash function, uses the entire string and weights each letter in an attempt to make more unique hashes
     unsigned int myhash( const std::string & key )
     {
         unsigned int hashVal = 0;

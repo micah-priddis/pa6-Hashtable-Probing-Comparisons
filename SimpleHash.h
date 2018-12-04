@@ -1,7 +1,7 @@
 #ifndef SIMPLEHASH_H
-#define SIMPLEHADH_H
+#define SIMPLEHASH_H
 
-#include "QuadraticProbing.h"
+#include "PrimeFunctions.h"
 #include <vector>
 #include <algorithm>
 #include <functional>
@@ -154,6 +154,7 @@ class SimpleHash
                 insert( std::move( entry.element ) );
     }
 
+    //Simple hash function, adds the ascii values of each character in a string to form a hash
     size_t myhash( const std::string & key )
     {
         int hashVal = 0;
