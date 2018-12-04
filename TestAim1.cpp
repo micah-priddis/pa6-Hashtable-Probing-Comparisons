@@ -135,13 +135,12 @@ QuadraticHashTable<std::string> InsertIntoQuadraticHT(std::vector<std::string> d
 
 int main(){
 
-
+    // file processing for OHenry
     std::ifstream file;
     file.open("OHenry.txt");
 
-	std::vector<std::string> DataArray;
+    std::vector<std::string> DataArray; // vector used to hold OHenry data
 
-	//file processing
 	if(file.is_open()){
 		std::string line;
 
@@ -151,11 +150,12 @@ int main(){
 	}
 	file.close();
 
-        file.open("queries.txt");
 
-	std::vector<std::string> QueryArray;
+    // file processing for query
+    file.open("queries.txt");
 
-	//file processing
+    std::vector<std::string> QueryArray; // vector used to hold search queries
+
 	if(file.is_open()){
 		std::string line;
 
